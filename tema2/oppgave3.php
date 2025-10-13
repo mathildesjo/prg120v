@@ -8,11 +8,11 @@ if (!$svar) /* det er ikke svart på spørsmålet */
 {
 print("Du har ikke svart p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
 }
-else if ($svar == "j" || $svar == "J" || $svar == "ja" || $svar == "JA" || $svar == "Ja" )
+else if ($svar == "j" or $svar == "J" or $svar == "ja" or $svar == "JA" or $svar == "Ja" )
 { /* det er et Ja-svar på spørsmålet */
 print("Du har svart ja p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
 }
-else if ($svar == "n" || $svar == "N" || $svar == "nei" || $svar == "NEI" || $svar == "Nei")
+else if ($svar == "n" or $svar == "N" or $svar == "nei" or $svar == "NEI" or $svar == "Nei")
 { /* det er et Nei-svar på spørsmålet */
 print("Du har svart nei p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
 }
