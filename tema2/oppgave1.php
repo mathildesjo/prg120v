@@ -5,7 +5,7 @@
 */
 $svar=$_POST ["svar"];
 
-$svar.lower();
+
 if (!$svar) /* det er ikke svart på spørsmålet */
 {
 print("Du har ikke svart p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
