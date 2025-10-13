@@ -1,25 +1,15 @@
 <?php /* Oppgave 1 */
 /*
-/* Programmet mottar fra et HTML-skjema et svar på spørsmålet "Er du student (j/n) ?"
-/* Programmet sjekker om det er svart j eller n på spørsmålet og skriver ut en passende melding
+/* Programmet mottar fra et HTML-skjema et svar på spørsmålet "Hva er 3 ganger 3 ?"
+/* Programmet sjekker om svaret er riktig og skriver ut en melding avhengig av om svaret er riktig eller feil
 */
 $svar=$_POST ["svar"];
-
-
-if (!$svar) /* det er ikke svart på spørsmålet */
+if ($svar == 9) /* avgitt svar er riktig */
 {
-print("Du har ikke svart p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
+print("Riktig. 3 ganger 3 er 9 <br/>");
 }
-else if ($svar == "j" or $svar == "ja" or $svar == "JA")  /* det er svart j på spørsmålet */
+else /* avgitt svar er feil */
 {
-print("Du har svart ja p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
-}
-else if ($svar == "n") /* det er svart n på spørsmålet */
-{
-print("Du har svart nei p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
-}
-else /* det er ikke svart verken j eller n på spørsmålet */
-{
-print("Du har ikke svart ja eller nei p&aring; sp&oslash;rsm&aring;let om du er student <br/>");
+print("Feil. 3 ganger 3 er ikke $svar. 3 ganger 3 er 9 <br/>");
 }
 ?>
