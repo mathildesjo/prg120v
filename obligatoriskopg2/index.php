@@ -7,12 +7,12 @@
 <body>
     <h1>Velg funksjon</h1>
     <ul>
-        <li><a href="vis_klasse.php">Vis klasser</a></li>
-        <li><a href="vis_student.php">Vis studenter</a></li>
-        <li><a href="leggtil_klasse.php">Registrer ny klasse</a></li>
-        <li><a href="leggtil_student.php">Registrer ny student</a></li>
-        <li><a href="slett_klasse.php">Slett klasse</a></li>
-        <li><a href="slett_student.php">Slett student</a></li>
+        <li><a href="vis-klasse.php">Vis klasser</a></li>
+        <li><a href="vis-student.php">Vis studenter</a></li>
+        <li><a href="leggtil-klasse.php">Registrer ny klasse</a></li>
+        <li><a href="leggtil-student.php">Registrer ny student</a></li>
+        <li><a href="slett-klasse.php">Slett klasse</a></li>
+        <li><a href="slett-student.php">Slett student</a></li>
     </ul>
 </body>
 </html>
