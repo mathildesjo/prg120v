@@ -13,6 +13,7 @@
         <li><a href="leggtil-student.php">Registrer ny student</a></li>
         <li><a href="slett-klasse.php">Slett klasse</a></li>
         <li><a href="slett-student.php">Slett student</a></li>
+        <li><a href="db-php"><Database-php></a></li>
     </ul>
 </body>
 </html>
