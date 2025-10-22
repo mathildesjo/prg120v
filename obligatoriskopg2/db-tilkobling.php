@@ -1,11 +1,12 @@
-<?php
-$host = 'localhost';
-$db = 'databasenavn';
-$user = 'brukernavn';
-$pass = 'passord';
+<?php  /* db-tilkobling */
+/*
+/*  Programmet foretar tilkobling til database-server og valg av database
+*/
+$host = getenv('DB_HOST');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+$database = getenv('DB_DATABASE');
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Tilkobling feilet: " . $conn->connect_error);
-}
-?>
+ $db=mysqli_connect($host,$username,$password,$database) or die ("ikke kontakt med database-server");
+    /* tilkobling til database-serveren utført */
+ ?>
