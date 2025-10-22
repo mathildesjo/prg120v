@@ -1,12 +1,20 @@
-<?php  /* db-tilkobling */
-/*
-/*  Programmet foretar tilkobling til database-server og valg av database
-*/
-$host = getenv('DB_HOST');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$database = getenv('DB_DATABASE');
+<?php
+// db-tilkobling.php
+// Kobling til MySQL-database
 
- $db=mysqli_connect($host,$username,$password,$database) or die ("ikke kontakt med database-server");
-    /* tilkobling til database-serveren utført */
- ?>
+$host = "localhost";        // Serveren databasen ligger på
+$brukernavn = "root";       // MySQL brukernavn
+$passord = "";              // MySQL passord (sett passordet ditt her)
+$database = "skole";        // Navn på databasen din
+
+// Opprette kobling
+$db = mysqli_connect($host, $brukernavn, $passord, $database);
+
+// Sjekke kobling
+if (!$db) {
+    die("Feil ved tilkobling til databasen: " . mysqli_connect_error());
+}
+
+// Sett tegnsett til UTF-8
+mysqli_set_charset($db, "utf8");
+?>
