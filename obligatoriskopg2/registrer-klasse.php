@@ -1,4 +1,5 @@
 <?php
+include("db-tilkobling.php";)
 class KlasseRegistrering {
     private $db;
 
