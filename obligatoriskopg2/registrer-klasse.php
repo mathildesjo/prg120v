@@ -1,60 +1,50 @@
 <?php
+/* registrer-klasse */
+/*
+/*  Programmet lager et html-skjema for å registrere en klasse
+/*  Programmet registrerer data (klassekode og klassenavn) i databasen
+*/
 include("db-tilkobling.php");
-class KlasseRegistrering {
-    private $db;
+?> 
 
-    public function __construct($dbTilkobling) {
-        $this->db = $dbTilkobling;
+<h3>Registrer klasse</h3>
+
+<form method="post" action="" id="registrerKlasseSkjema" name="registrerKlasseSkjema">
+  Klassekode: <input type="text" id="klassekode" name="klassekode" required /> <br/>
+  Klassenavn: <input type="text" id="klassenavn" name="klassenavn" required /> <br/>
+  <input type="submit" value="Registrer klasse" id="registrerKlasseKnapp" name="registrerKlasseKnapp" /> 
+  <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
+</form>
+
+<?php 
+if (isset($_POST["registrerKlasseKnapp"]))
+{
+    $klassekode = $_POST["klassekode"];
+    $klassenavn = $_POST["klassenavn"];
+
+    if (!$klassekode || !$klassenavn)
+    {
+        print("B&aring;de klassekode og klassenavn m&aring; fylles ut");
     }
+    else
+    {
+        include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-    // Viser HTML-skjemaet
-    public function visSkjema() {
-        echo '
-        <h3>Registrer klasse</h3>
-        <form method="post" action="">
-            Klassenavn: <input type="text" name="klasse" required /> <br/>
-            <input type="submit" name="registrerKlasseKnapp" value="Registrer klasse" />
-            <input type="reset" value="Nullstill" /> <br/>
-        </form>
-        ';
-    }
+        $sqlSetning = "SELECT * FROM klasse WHERE klassekode='$klassekode';";
+        $sqlResultat = mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
+        $antallRader = mysqli_num_rows($sqlResultat); 
 
-    // Behandler innsending av skjemaet
-    public function behandleSkjema() {
-        if (!isset($_POST['registrerKlasseKnapp'])) {
-            return; // Skjema ikke sendt inn
+        if ($antallRader != 0)  /* klassen er registrert fra før */
+        {
+            print("Klassen er registrert fra f&oslash;r");
         }
+        else
+        {
+            $sqlSetning = "INSERT INTO klasse VALUES('$klassekode', '$klassenavn');";
+            mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
 
-        $klasse = trim($_POST['klasse']);
-
-        if (empty($klasse)) {
-            echo "Klassenavn må fylles ut.";
-            return;
+            print("F&oslash;lgende klasse er n&aring; registrert: $klassekode $klassenavn"); 
         }
-
-        // Sjekk om klassen allerede finnes
-        $sql = "SELECT * FROM klasse WHERE klasse = ?";
-        $stmt = mysqli_prepare($this->db, $sql);
-        mysqli_stmt_bind_param($stmt, "s", $klasse);
-        mysqli_stmt_execute($stmt);
-        $resultat = mysqli_stmt_get_result($stmt);
-
-        if (mysqli_num_rows($resultat) > 0) {
-            echo "Klassen er registrert fra før.";
-        } else {
-            // Sett inn ny klasse
-            $sql = "INSERT INTO klasse (klasse) VALUES (?)";
-            $stmt = mysqli_prepare($this->db, $sql);
-            mysqli_stmt_bind_param($stmt, "s", $klasse);
-
-            if (mysqli_stmt_execute($stmt)) {
-                echo "Følgende klasse er nå registrert: " . htmlspecialchars($klasse);
-            } else {
-                echo "Det oppstod en feil ved registrering.";
-            }
-        }
-
-        mysqli_stmt_close($stmt);
     }
 }
-?>
+?> 
