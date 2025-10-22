@@ -4,7 +4,7 @@
 /*  Programmet lager et html-skjema for å registrere en klasse
 /*  Programmet registrerer data (klassekode og klassenavn) i databasen
 */
-include("db-tilkobling.php");
+
 ?> 
 
 <h3>Registrer klasse</h3>
