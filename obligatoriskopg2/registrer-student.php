@@ -15,14 +15,8 @@
   <select id="klassekode" name="klassekode" required>
     <option value="">Velg klassekode</option>
     <?php
-      include("db-tilkobling.php");
-      $sqlSetning = "SELECT * FROM klasse ORDER BY klassekode;";
-      $sqlResultat = mysqli_query($db, $sqlSetning) or die ("Ikke mulig å hente data fra databasen");
-
-      while ($rad = mysqli_fetch_array($sqlResultat)) {
-        $klassekode = $rad["klassekode"];
-        print ("<option value='$klassekode'>$klassekode</option>");
-      }
+      include("dynamiske-funksjoner.php");
+      listeboksKlasse();  // dynamisk fylling av klassekode fra databasen
     ?>
   </select> 
   <br/>
@@ -39,24 +33,22 @@
       $klassekode = $_POST["klassekode"];
 
       if (!$brukernavn || !$fornavn || !$etternavn || !$klassekode) {
-          print ("Alle felt må fylles ut");
-      }
-      else {
-          include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
+          print("Alle felt må fylles ut");
+      } else {
+          include("db-tilkobling.php");
 
           $sqlSetning = "SELECT * FROM student WHERE brukernavn='$brukernavn';";
-          $sqlResultat = mysqli_query($db, $sqlSetning) or die ("Ikke mulig å hente data fra databasen");
+          $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen: " . mysqli_error($db));
           $antallRader = mysqli_num_rows($sqlResultat); 
 
           if ($antallRader != 0) {
-              print ("Studenten er registrert fra før");
-          }
-          else {
+              print("Studenten er registrert fra før");
+          } else {
               $sqlSetning = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode) 
                              VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode');";
-              mysqli_query($db, $sqlSetning) or die ("Ikke mulig å registrere data i databasen");
+              mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere data i databasen: " . mysqli_error($db));
 
-              print ("<p>Følgende student er nå registrert: <b>$brukernavn $fornavn $etternavn ($klassekode)</b></p>"); 
+              print("<p>Følgende student er nå registrert: <b>$brukernavn $fornavn $etternavn ($klassekode)</b></p>"); 
           }
       }
   }
