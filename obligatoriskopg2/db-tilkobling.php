@@ -2,10 +2,10 @@
 // db-tilkobling.php
 // Kobling til MySQL-database
 
-$host = "localhost";        // Serveren databasen ligger på
-$brukernavn = "root";       // MySQL brukernavn
-$passord = "";              // MySQL passord (sett passordet ditt her)
-$database = "skole";        // Navn på databasen din
+$host = "127.0.0.1";        // Bruk 127.0.0.1 i stedet for localhost
+$brukernavn = "root";       // MySQL-brukernavn
+$passord = "";              // Passord (sett inn hvis du har)
+$database = "skole";        // Databasenavn
 
 // Opprette kobling
 $db = mysqli_connect($host, $brukernavn, $passord, $database);
