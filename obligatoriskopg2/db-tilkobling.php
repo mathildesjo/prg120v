@@ -1,20 +1,10 @@
 <?php
-// db-tilkobling.php
-// Kobling til MySQL-database
 
-$host = "127.0.0.1";        // Bruk 127.0.0.1 i stedet for localhost
-$brukernavn = "root";       // MySQL-brukernavn
-$passord = "";              // Passord (sett inn hvis du har)
-$database = "skole";        // Databasenavn
+$host = gatenv('DB_HOST');
+$username = gatenv('DB_USER');
+$password = gatenv('DB_PASSWORD');
+$database = gatenv('DB_DATABASE');
 
-// Opprette kobling
-$db = mysqli_connect($host, $brukernavn, $passord, $database);
+$db=mysqli_connect($host,$username,$password,$database) or die ("ikke kontakt med database-server");
 
-// Sjekke kobling
-if (!$db) {
-    die("Feil ved tilkobling til databasen: " . mysqli_connect_error());
-}
-
-// Sett tegnsett til UTF-8
-mysqli_set_charset($db, "utf8");
 ?>
