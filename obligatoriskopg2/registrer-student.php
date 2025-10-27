@@ -12,7 +12,6 @@
   Brukernavn <input type="text" id="brukernavn" name="brukernavn" maxlength="7" required /> <br/>
   Fornavn <input type="text" id="fornavn" name="fornavn" maxlength="50" required /> <br/>
   Etternavn <input type="text" id="etternavn" name="etternavn" maxlength="50" required /> <br/>
-<input type="submit">
 <?php
 
   include("db-tilkobling.php");
@@ -34,6 +33,8 @@
     </select> 
     <br/>
   
+<input type="submit" value="Registrer student" id="registrerStudentKnapp" name="registrerStudentKnapp" />
+<input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br/>
 </form>
 
 <?php
