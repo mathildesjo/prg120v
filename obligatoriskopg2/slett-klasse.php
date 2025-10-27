@@ -29,6 +29,7 @@ while ($rad = mysqli_fetch_array($sqlResultat)) {
     $klassenavn = $rad["klassenavn"];
     print("<option value='$klassekode'>$klassekode - $klassenavn</option>");
 }
+?>
 </select>
 <br/>
 
