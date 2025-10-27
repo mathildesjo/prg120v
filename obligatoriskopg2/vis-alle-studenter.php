@@ -2,6 +2,7 @@
 /*
 /*  Programmet skriver ut alle registrerte studenter
 */
+?>
 
 <h3>Alle registrerte studenter</h3>
 <?php
