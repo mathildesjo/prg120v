@@ -47,7 +47,7 @@
 
 
 
-            $sqlSetning = "SELECT FROM student WHERE brukernavn='$brukernavn';";
+            $sqlSetning = "SELECT * FROM student WHERE brukernavn='$brukernavn';";
             $sqlResultat = mysqli_query($db, $sqlSetning) or die ("Ikke mulig å hente data fra databasen");
             $antallRader = mysqli_num_rows($sqlResultat);
 
