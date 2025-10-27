@@ -15,7 +15,6 @@
 include("db-tilkobling.php"); 
 
 
-
 $sqlSetning = "SELECT * FROM klasse ORDER BY klassekode;";
 $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen.");
 ?>
@@ -52,6 +51,16 @@ if (isset($_POST["slettKlasseKnapp"])) {
     if ($antallRader == 0) {
         echo "Klassen finnes ikke.";
     } else {
+
+        $sqlSetning = "SELECT COUNT(*) AS antall FROM student WHERE klassekode='$klassekode';";
+        $sqlResultat = mysqli_query($db, $sqlSetning) or die("Feil ved henting av studentdata.");
+        $rad = mysqli_fetch_array($sqlResultat);
+        $antallstudenter = $rad["antall"];
+
+        if ($antallstudenter > 0) {
+        
+    echo "Klassen <b>$klassekode</b> kan ikke slettes fordi den har $antallstudenter registrerte student(er).";
+} else {
 
         $sqlSetning = DELETE FROM klasse WHERE klassekode='$klassekode';";
         mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette klassen fra databasen.");
