@@ -24,8 +24,8 @@
         <?php 
             while ($rad = mysqli_fetch_array($sqlResultat))  {
                 $brukernavn = $rad["brukernavn"];
-                $fornavn = $rad["fornavn"];
-                $etternavn = $rad["etternavn"];
+                /*$fornavn = $rad["fornavn"];
+                $etternavn = $rad["etternavn"];*/
                 print("<option value='$brukernavn'>$brukernavn - $fornavn $etternavn</option>");
             }
             ?>
