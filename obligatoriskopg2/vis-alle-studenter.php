@@ -25,7 +25,7 @@
       print ("<table border='1' cellspacing='0' cellpadding='5'>");
       print ("<tr><th>Brukernavn</th><th>Fornavn</th><th>Etternavn</th><th>Klassekode</th></tr>");
     
-    while ($rad = mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
+    while ($rad = mysqli_fetch_array($sqlResultat)) { /* ny rad hentet fra spørringsresultatet */
       $brukernavn = $rad["brukernavn"];
       $fornavn = $rad["fornavn"];
       $etternavn = $rad["etternavn"];
