@@ -1,10 +1,12 @@
-<?php  /* vis-alle-studenter */
+<?php 
+/* vis-alle-studenter */
 /*
 /*  Programmet skriver ut alle registrerte studenter
 */
 ?>
 
 <h3>Alle registrerte studenter</h3>
+
 <?php
   include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
@@ -21,7 +23,7 @@
     else
     {
       print ("<table border='1' cellspacing='0' cellpadding='5'>");
-      print ("<tr> <th>Brukernavn</th> <th>Fornavn</th> <th>Etternavn</th> <th>Klassekode</th> </tr>");
+      print ("<tr><th>Brukernavn</th><th>Fornavn</th><th>Etternavn</th><th>Klassekode</th></tr>");
     
     while ($rad = mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
       $brukernavn = $rad["brukernavn"];
