@@ -26,7 +26,7 @@
                 $brukernavn = $rad["brukernavn"];
                 /*$fornavn = $rad["fornavn"];
                 $etternavn = $rad["etternavn"];*/
-                print("<option value='$brukernavn'>$brukernavn - $fornavn $etternavn</option>");
+                print("<option value='$brukernavn'>$brukernavn</option>");
             }
             ?>
     </select>
