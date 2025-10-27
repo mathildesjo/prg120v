@@ -18,7 +18,7 @@
   include("db-tilkobling.php");
 
   $sqlSetning = "SELECT * FROM klasse ORDER BY klassekode;";
-  $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen: " . mysqli_error($db));
+  $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen.");
   ?>
 
   Klassekode:
@@ -28,11 +28,12 @@
       while ($rad = mysqli_fetch_array($sqlResultat)) {
         $klassekode = $rad["klassekode"];
         $klassenavn = $rad["klassenavn"];
-      print "<option value='$klassekode'>$klassekode - $klassenavn</option>";
+      print ("<option value='$klassekode'>$klassekode - $klassenavn</option>");
       }
     ?>
     </select> 
     <br/>
+  
     input type="submit" value="Registrer student" id="registrerStudentKnapp" name="registrerStudentKnapp" />
     input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> br />
 </form>
