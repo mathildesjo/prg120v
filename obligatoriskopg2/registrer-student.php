@@ -56,7 +56,7 @@ if (isset($_POST["registrerStudentKnapp"])) {
     if ($antallRader != 0) {
       print("Brukernavnet er allerede registrert, vennligst velg et annet brukernavn.<br/>");
     } else {
-      $sqlSetning = INSERT INTO student (brukernavn, fornavn, etternavn, klassekode) 
+      $sqlSetning = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode) 
       VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode');
       mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere data i databasen: " . mysqli_error($db));
       
